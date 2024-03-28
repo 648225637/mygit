@@ -19,3 +19,4 @@ public class MybatisJDBC_Demo {
         conn.close();
     }
 }
+

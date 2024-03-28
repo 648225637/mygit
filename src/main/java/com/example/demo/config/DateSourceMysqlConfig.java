@@ -19,29 +19,28 @@ public class DateSourceMysqlConfig {
      * @Primary //@Primary是一个Spring Framework的注解，
      * 用于标记一个bean（组件）是首选的bean（组件）。当多个相同类型的bean被定义时，
      * 被标记为@Primary的bean会被优先选择
-     * @return
      */
     @Primary
-    @Bean(name = "localDataSource")
-    @Qualifier("localDataSource")
+    @Bean(name = "localMysqlDataSource")
+    @Qualifier("localMysqlDataSource")
     @ConfigurationProperties(prefix="spring.datasource.localmysql")
-    public DataSource localDataSource() {
+    public DataSource localMysqlDataSource() {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean(name = "fwskDataSource")
-    @Qualifier("fwskDataSource")
-    @ConfigurationProperties(prefix="spring.datasource.fwsk")
-    public DataSource fwskDataSource() {
+    @Bean(name = "localOracleDataSource")
+    @Qualifier("localOracleDataSource")
+    @ConfigurationProperties(prefix="spring.datasource.localoracle")
+    public DataSource localOracleDataSource() {
         return DataSourceBuilder.create().build();
     }
-    @Bean(name = "localJdbcTemplate")
-    public JdbcTemplate localJdbcTemplate(@Qualifier("localDataSource")DataSource dataSource){
+    @Bean(name = "localMysqlJdbcTemplate")
+    public JdbcTemplate localMysqlJdbcTemplate(@Qualifier("localMysqlDataSource")DataSource dataSource){
         return new JdbcTemplate(dataSource);
     }
 
-    @Bean(name = "fwskJdbcTemplate")
-    public JdbcTemplate fwskJdbcTemplate(@Qualifier("fwskDataSource")DataSource dataSource){
+    @Bean(name = "localOracleJdbcTemplate")
+    public JdbcTemplate localOracleJdbcTemplate(@Qualifier("localOracleDataSource")DataSource dataSource){
         return new JdbcTemplate(dataSource);
     }
 }

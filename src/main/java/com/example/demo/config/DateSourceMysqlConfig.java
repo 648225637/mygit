@@ -16,7 +16,7 @@ public class DateSourceMysqlConfig {
 
 
     /**
-     * @Primary //@Primary是一个Spring Framework的注解，
+     * //@Primary是一个Spring Framework的注解，
      * 用于标记一个bean（组件）是首选的bean（组件）。当多个相同类型的bean被定义时，
      * 被标记为@Primary的bean会被优先选择
      */
